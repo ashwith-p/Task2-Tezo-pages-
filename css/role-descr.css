@@ -86,10 +86,11 @@
     column-gap: 10px;
 }
 .emp-card{
-    width: 30%;
-    padding: 5px;
+    width: 29%;
+    padding: 20px;
     border: 1px solid rgb(212, 207, 207);
     min-width: 300px;
+
 }
 .alignment {
     display: inline-flex;
@@ -101,16 +102,17 @@
     opacity: 0.6;
 }
 .emp-work-info {
-    margin-left: 14px;
-    margin-right: 10px;
+    margin-left: 5px;
+    margin-right: 6px;
 }
 .description-section{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: left;
     row-gap: 10px;
     font-size: 14px;
     margin-top: 12px;
+    column-gap: 1%;
     
 }
 .m-8{
@@ -119,4 +121,8 @@
 .align-right{
     text-align: right;
     opacity: 0.6;
+    cursor: pointer;
+}
+.emp-role-name{
+    color: #444343;
 }

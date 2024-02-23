@@ -17,14 +17,15 @@ body{
     display: flex;
     align-content: space-between;
     flex-wrap: wrap;
-    width: 200px;
+    width: 196px;
 }
 
 
 .handle {
     position: absolute;
+    left: -15px;
     top: 3%;
-    left: 14.5%;
+    cursor: pointer;
 }
 .horizantal-nav-description{
     font-size: 10px;
@@ -47,12 +48,15 @@ body{
     width: 18px;
     
 }
-
+.brand-icon{
+    display: none;
+}
 .features{
     
     display: flex;
-    padding-left: 10px;
+    padding-left: 8px;
     border-radius: 5px;
+    position: relative;
 }
 
 .brand-logo {
@@ -107,8 +111,9 @@ body{
 }
 
 .container{
-    padding: 10px 20px;
+    padding: 10px 15px;
     width: calc(100% - 200px);
+    position: relative;
 }
 
 .vertical-nav{
@@ -150,4 +155,31 @@ body{
 }
 .admin-name{
     font-size: 13px;
+}
+
+.toggle{
+    width:75px;
+}
+/* .toggle .install-update{
+        display: none;
+    } */
+.toggle .horizantal-nav{
+        width: 73%;
+    }
+.toggle .horizantal-nav-names,.toggle .install-update,.toggle .brand-logo{
+        display: none;
+    }
+.toggle .horizontal-logos{
+        width: 26px;
+        padding: 10px;
+    }
+.toggle .features{
+        padding: 0px;
+    }
+/* .toggle .brand-logo{
+    display: none;
+} */
+.toggle .brand-icon{
+    display: block;
+    width: 45px;
 }

@@ -25,8 +25,9 @@
         content: "";
         background-color: #F44848;
         width: 3px;
-        position: relative;
-        left: 11px;
+        height: 41px;
+        position: absolute;
+        right: -13px;
         border-radius: 2px 0px 0px 2px;
 }
 .add-btn {
@@ -49,6 +50,10 @@
 .content {
     opacity: 0.7;
     margin-bottom: 5px;
+}
+
+#edit-btn{
+    cursor: pointer;
 }
 
 .filter-search {
@@ -83,7 +88,7 @@
     border-radius: 5px;
 }
 .apply-btn{
-    background-color: #F44848;
+    background-color: #f17b7b   ;
     color: #ffffff;
 }
 .filter-search button:hover{
@@ -100,24 +105,24 @@
     border-radius: 50px;
 }
 .p1{
-    z-index: 1;
+    z-index: 5;
     position: relative;
-    left: 34px;
+    left: 60px;
 }
 .p2 {
-    z-index: 2;
+    z-index: 4;
     position: relative;
-    left: 22px;
+    left: 30px;
 }
 .p3 {
     z-index: 3;
     position: relative;
-    left: 11px;
+    left: 0px;
 }
 .p4 {
-    z-index: 4;
+    z-index: 2;
     position: relative;
-    right: 2px;
+    right: 31px;
 }
 .total-employees{
     width: 100px;
@@ -139,12 +144,14 @@
 .emp-count{
     border-radius: 50px;
     position: relative;
-    bottom: 20px;
-    z-index: 5;
-    background-color: white;
-    width: 23px;
-    height: 17px;
-    left: 80px;
+    bottom: 23px;
+    z-index: 6;
+    background-color: #eeeeee;
+    width: 21px;
+    height: 19px;
+    left: 74px;
+    text-align: center;
+    padding-top: 2px;
 }
 .emp-count-num{
     margin: 0px;
@@ -157,10 +164,12 @@
 }
 .view-employee{
     text-align: right;
+    cursor: pointer;
 }
 .roles-info{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: left;
     row-gap: 5px;
+    column-gap: 2%;
 }
