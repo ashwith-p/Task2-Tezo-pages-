@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href ="css/addRole.css">
-    <script src="js/common.js" defer></script>
-    <script src="js/addRoles.js" defer></script>
+
     
     <title>Document</title>
 </head>
@@ -15,6 +14,7 @@
         <nav class="horizantal-nav">
             <img src="images/tezosymbol.png" alt="tezosybol" class="brand-icon"/>
             <img src="images/TezoLogo.svg" alt="TezoLogo" class="brand-logo"/>
+            <img src="images/handle.png" alt="Handle" class="handle" onclick="toggle()"/>
             <p class="horizantal-nav-description">ALL</p>
             <div class="dashboard features">
                 <img src="images/Dashboard.svg" alt="DashboardLogo" class="horizontal-logos">
@@ -44,14 +44,14 @@
         </div>
     </div>
     <div class="container">
-        <img src="images/handle.png" alt="Handle" class="handle" onclick="toggle()"/>
+       
         <nav class="vertical-nav">
             <img src="images/bx-search.png" alt="Search" />
             <input type="text" placeholder="Search" class="search-box">
-            <img src="images/Language.svg" alt="Language" class="clr-img"/>
-            <img src="images/Dashboard.svg" alt="Language" class="clr-img"/>
-            <img src="images/Mode.svg" alt="Language" class="clr-img"/>
-            <img src="images/Notifications.svg" alt="Language" class="clr-img"/>
+            <img src="images/Language.svg" alt="Language" class="clr-img language-icon"/>
+            <img src="images/Dashboard.svg" alt="Language" class="clr-img dashboard-icon"/>
+            <img src="images/Mode.svg" alt="Language" class="clr-img mode-icon"/>
+            <img src="images/Notifications.svg" alt="Language" class="clr-img notifications-icon"/>
             <div class="admin-details">
                 <img src="images/Active-status-1.png" alt="Active-status-1" class="admin-img">
                 <div>
@@ -67,7 +67,7 @@
             <div class="basic-info">
                 <div class="display-flex">
                     <label for="RoleName">Role Name</label>
-                    <input type="text" placeholder="Text" id="designation" onfocus="border_change(this)" onblur="border_change(this)">
+                    <input type="text" placeholder="Text" id="designation" onfocus="border_change(this)" onblur="findRoleDuplicates(this)">
                 </div>
                 <div class="display-flex">
                     <label for="Department">Department</label>
@@ -81,7 +81,7 @@
             </div>
             <div class="display-flex">
                 <label for="description">Description</label>
-                <textarea width="320px" rows="10" placeholder="Text" id="description" onfocus="border_change(this)" onblur="border_change(this)"></textarea>
+                <textarea  rows="10" placeholder="Text" id="description" onfocus="border_change(this)" onblur="border_change(this)"></textarea>
             </div>
             <div class="display-flex">
                 <label for="Location">Location</label>
@@ -110,5 +110,7 @@
             <input type="button"  value="Add Role" class="add-btn" onclick="validateRole()">
         </div>
         </div>
+        <script src="js/common.js" ></script>
+        <script src="js/addRoles.js"></script>
 </body>
 </html>

@@ -67,6 +67,8 @@
     justify-content: space-between;
     align-items: center;
     row-gap: 15px;
+    display: flex;
+    flex-wrap: wrap;
 }
 .filter-search span{
     margin-right: 10px;
@@ -171,5 +173,91 @@
     flex-wrap: wrap;
     justify-content: left;
     row-gap: 5px;
-    column-gap: 2%;
+    column-gap: 1%;
+}
+
+@media screen and (max-width:1156px) {
+    .admin-details{
+        width: 23%;
+    }
+    .search-box {
+        width: 43%;
+    }
+    
+}
+
+@media screen and (max-width:856px) {
+    .admin-details{
+        width: 27%;
+    }
+    .search-box {
+        width: 38%;
+    }
+}
+
+@media screen and (max-width:765px) {
+    .admin-details{
+        width: 32%;
+    }
+    .search-box {
+        width: 33%;
+    }
+    .admin-img {
+        width: 25px;
+        }
+    
+        .admin-name {
+            font-size: 10px;
+        }
+    
+        
+        .designation{
+            font-size: 11px;
+        }
+        .search-icon{
+            width: 15px;
+        }
+        .language-icon{
+            width: 25px;
+        }
+        .dashboard-icon{
+            width: 15px;
+        }
+        .mode-icon{
+            width: 27px;
+        }
+        .notifications-icon{
+            width: 31px;
+        }
+}
+@media screen and (max-width:526px) {
+    .admin-details p{
+        display: none;
+    }
+    .admin-details{
+        width: 15%;
+    }
+    .down-arrow{
+        width: 12px;
+    }
+}
+@media screen and (max-width:425px) {
+    .role-card{
+        min-width: 220px;
+        padding: 2px;
+    }
+    .add-btn {
+        padding: 4px;
+        width: 100px;
+        font-size: 10px;
+        height: 36px;
+        padding: 12px 8px 13px 14px;
+    }
+    .add-btn img {
+        padding-right: 6px;
+        width: 12px;
+    }
+    .add-roles div{
+        width: 103px;
+    }
 }

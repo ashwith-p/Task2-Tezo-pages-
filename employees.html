@@ -14,6 +14,7 @@
         <nav class="horizantal-nav">
             <img src="images/tezosymbol.png" alt="tezosybol" class="brand-icon"/>
             <img src="images/TezoLogo.svg" alt="TezoLogo" class="brand-logo"/>
+            <img src="images/handle.png" alt="Handle" class="handle" onclick="toggle()"/>
             <p class="horizantal-nav-description">ALL</p>
             <div class="dashboard features">
                 <img src="images/Dashboard.svg" alt="DashboardLogo" class="horizontal-logos">
@@ -43,30 +44,30 @@
         </div>
     </div>
     <div class="container">
-        <img src="images/handle.png" alt="Handle" class="handle" onclick="toggle()"/>
+       
         <nav class="vertical-nav">
-            <img src="images/bx-search.png" alt="Search" />
+            <img src="images/bx-search.png" alt="Search" class="search-icon" />
             <input type="text" placeholder="Search" class="search-box">
-            <img src="images/Language.svg" alt="Language" class="clr-img"/>
-            <img src="images/Dashboard.svg" alt="Language" class="clr-img"/>
-            <img src="images/Mode.svg" alt="Language" class="clr-img"/>
-            <img src="images/Notifications.svg" alt="Language" class="clr-img"/>
+            <img src="images/Language.svg" alt="Language" class="clr-img language-icon"/>
+            <img src="images/Dashboard.svg" alt="Language" class="clr-img dashboard-icon" />
+            <img src="images/Mode.svg" alt="Language" class="clr-img mode-icon"/>
+            <img src="images/Notifications.svg" alt="Language" class="clr-img notifications-icon"/>
             <div class="admin-details">
                 <img src="images/Active-status-1.png" alt="Active-status-1" class="admin-img">
                 <div>
                 <p class="admin-name">Jhon Abraham</p>
-                <p><b>Admin</b></p>
+                <p class="designation"><b>Admin</b></p>
                 </div>
                 <img src="images/side_arrow.svg" alt="down_arrow" class="down-arrow">
             </div>
         </nav>
         <section>
             <div class="employees-add-export">
-                <div>
+                <div class="employee-content">
                     <p>Employees</p>
                     <p class="content">Find all of your company's employee accounts and their associated roles</p>
                 </div>
-                <div>
+                <div class="export-addemployee">
                     <button class="export-btn" onclick="exportData()"><img src="images/Export.svg" alt="Export-img">EXPORT</button>
                     <button class="add-btn"  onclick="window.location.href = 'add-employee.html'"><img src="images/Add.svg" alt="add-img">ADD EMPLOYEE</button>
                 </div>
@@ -95,13 +96,13 @@
                     <option value="none"  selected disabled hidden>Location</option>
                     <option value="Hyderabad">Hyderabad</option>
                     <option value="Chennai">Chennai</option>
-                    <option value="Pune">Pune</option>
+                    <option value="Mumbai">Mumbai</option>
                 </select>
                 <select id="dept" onchange="activateButton('apply-btn')">
                     <option value="none"  selected disabled hidden>Department</option>
                     <option value="Product Engg.">Product Engg</option>
                     <option value="UI/UX">UI/UX</option>
-                    <option value="Architect">Architect</option>
+                    <option value="Quality Analyst">Quality Analyst</option>
                 </select>
                 </div>
                 <div>
@@ -131,8 +132,8 @@
             </div>
         </section>
     </div>
-    <script  src="js/common.js"></script>
-    <script  src="js/employee.js" defer></script>
+    <script  src="js/common.js" ></script>
+    <script  src="js/employee.js" ></script>
     
 </body>
 </html>

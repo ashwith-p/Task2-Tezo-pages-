@@ -1,6 +1,7 @@
 
 .features{
     column-gap: 10px;
+    width: 168px;
 }
 .employees{
     background-color:#FDE6E6 ;
@@ -26,7 +27,7 @@
     margin-top: 10px;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    
 }
 .export-btn {
     width: 120px;
@@ -117,6 +118,7 @@
     justify-content: space-between;
     align-items: center;
     row-gap: 15px;
+    flex-wrap: wrap;
 }
 .del-btn{
     display: inline-flex;
@@ -236,9 +238,12 @@ table, th, td {
     width: 100%;
     overflow: scroll;
     margin-top: 10px;
-    height: 56.79vh;
+    height: calc(100vh - 243px);
+   
 }
-
+.employee-info::-webkit-scrollbar {
+    display: none;
+}
 .user-width{
     width: 270px;
     text-overflow: ellipsis;
@@ -260,93 +265,232 @@ table, th, td {
     cursor: pointer;
 }
 
+@media screen and (max-width: 1244px){
+    .modify-table{
+        column-gap: 879px;
+        overflow: scroll;
+        scroll-behavior: smooth;
+        width: 975px;
+    }
+    
+}
 
-@media screen and (max-width:1153px){
-    .admin-details {
+
+@media screen and (max-width:1149px){
+    .filter li{
+        width: 7px;
+    }
+    .search-box{
+        width: 55%;
+    }
+    .admin-details{
         width: 18%;
     }
 }
-@media screen and (max-width:976px){
-    .horizantal-content{
-        width: 28%;
-    }
-}
-@media screen and (max-width:889px){
-    .admin-details {
-        width: 21%;
+@media screen and (max-width:1080px){
+    .employee-content{
+        width: 260px;
     }
     .filter ul {
-        display: none;
+        justify-content: left;
+        row-gap: 10px;
     }
-    .drop-down-menu{
-        display: contents;
-        outline: none;
-    }
-    .drop-down-menu select{
-        border: 1px solid red;
-    }
-    .filter {
-        column-gap: 30px;
-        padding: 10px;
-    }
+    
 }
-@media screen and (max-width:715px) {
-    .tezo-logo {
-        width: 81%;
-        padding: 6px 5px;
+
+@media screen and (max-width:1006px) {
+    .admin-details{
+        width: 23%;
     }
-    .handle {
-        top: -11%;
-        left: 90%;
+    .search-box {
+        width: 43%;
     }
-    .features {
-        width: 100px;
-    }
-    .horizontal-logos {
-        width: 25px;
-        padding: 10px;
-    }
-    .horizantal-nav-names {
-        display: none;
-    }
-    .employees::after {
-        left: 53%;
-    }
-    .install-update {
-        display: none;
-    }
-    .side-arrow-roles {
-        margin-left: 42px;
-    }
-    .horizantal-nav-description {
-        padding-top: 0px;
-    }
+    
+}
+
+@media screen and (max-width:834px) {
     .admin-details {
-        width: 28%;
+        width: 29%;
+    }
+    .export-btn{
+        margin-right: 0px;
+        width: 98px;
+        font-size: 11px;
+        border: 1px solid;
+        height: 40px;
+        display: inline-flex;
+        align-items: center;
+        padding-left: 14px;
+    }
+    .filter li{
+        width: 14px;
+        height: 15px;
+    }
+    .add-btn {
+        width: 162px;
+        font-size: 11px;
+        height: 28px;
+        box-shadow: 0px 0px 10px #928a8a;
+        display: inline-flex;
+        padding: 20px 20px 22px 25px;
+        align-items: center;
+    }
+    .employee-content {
+        width: 179px;
+    }
+    
+    .content {
+        font-size: 11px;
+    }
+    .filter{
+        align-items: center;
     }
 }
 
-@media screen and (max-width:505px) {
-    .clr-img{
-        display: none;
+@media screen and (max-width:772px) {
+
+   .admin-img {
+    width: 25px;
     }
-    .admin-details {
-        width: 38%;
+
+    .admin-name {
+        font-size: 10px;
     }
-    .features{
-        column-gap: 0px;
-    }
-}
-@media screen and (max-width:423px) {
-    .features{
-        width: 60px;
-    }
-    .side-arrow-roles
-    {
-        margin-left: 15px;
-    }
+
     .side-arrow-user{
         margin-left: 15px;
+    }
+    .designation{
+        font-size: 11px;
+    }
+    .search-icon{
+        width: 15px;
+    }
+    .language-icon{
+        width: 25px;
+    }
+    .dashboard-icon{
+        width: 15px;
+    }
+    .mode-icon{
+        width: 27px;
+    }
+    .notifications-icon{
+        width: 31px;
+    }
+    .export-btn {
+        width: 92px;
+        font-size: 9px;
+        padding-left: 14px;
+        height: 28px;
+    }
+    .add-btn {
+        width: 141px;
+        font-size: 9px;
+        height: 28px;
+        padding: 15px 15px 15px 19px;
+    }
+    .filter-search select {
+        padding: 8px 5px;
+        font-size: 10px;
+    }
+    .filter-search span {
+        
+        margin-right: 0px;
+        font-size: 13px;
+    }
+    .filter-search button {
+        padding: 5px 10px;
+        font-size: 10px;
+    }
+    .filter-search img{
+        width: 10px;
+    }
+    table, th, td {
+        font-size: 13px;
+    }
+
+}
+@media screen and (max-width:660px) {
+   .filter li{
+    width: 7px;
+    height: 12px;
+   }
+   .search-box{
+    width: 70%;
+   }
+   .filter-search select,button{
+    margin-top: 5px;
+   }
+   .admin-details{
+    width: 49%;
+   }
+   .container{
+    height: 100vh;
+    overflow: scroll;
+   }
+   .tezo-logo{
+    z-index: 12;
+   }
+   .export-addemployee{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 5px;
+    justify-content: center;
+   }
+   .admin-details p{
+    display: none;
+   }
+   .admin-details{
+    width: 15%;
+   }
+   .down-arrow{
+    width: 12px;
+   }
+
+}
+@media screen and (max-width:503px) {
+   .vertical-nav{
+    padding: 8px;
+   }
+   .filter a {
+    text-decoration: none;
+    color: #919DAC;
+    position: relative;
+    bottom: 92%;
+    font-size: 9px;
+   }
+   .filter li{
+    width: 5px;
+    height: 8px;
+   }
+}
+@media screen and (max-width:430px) {
+    .content{
+        font-size: 8px;
+    }
+    .add-btn {
+        width: 110px;
+        font-size: 8px;
+        height: 28px;
+        padding: 10px 10px 10px 10px;
+    }
+    
+    .export-btn {
+        width: 76px;
+        font-size: 9px;
+        padding-left: 7px;
+        height: 21px;
+    }
+    
+    .export-btn img {
+        padding-right: 8px;
+        width: 12px;
+    }
+    
+    .add-btn img {
+        padding-right: 8px;
+        width: 12px;
     }
     
 }

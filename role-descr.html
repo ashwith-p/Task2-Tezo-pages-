@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/role-descr.css">
-    <script src="js/common.js" defer></script>
-    <script src="js/roleDescr.js" defer></script>
+
     <title>Tezo</title>
 </head>
 <body>
@@ -14,6 +13,7 @@
         <nav class="horizantal-nav">
             <img src="images/tezosymbol.png" alt="tezosybol" class="brand-icon"/>
             <img src="images/TezoLogo.svg" alt="TezoLogo" class="brand-logo"/>
+            <img src="images/handle.png" alt="Handle" class="handle"  onclick="toggle()"/>
             <p class="horizantal-nav-description">ALL</p>
             <div class="dashboard features">
                 <img src="images/Dashboard.svg" alt="DashboardLogo" class="horizontal-logos">
@@ -43,14 +43,14 @@
         </div>
     </div>
     <div class="container">
-        <img src="images/handle.png" alt="Handle" class="handle"  onclick="toggle()"/>
+        
         <nav class="vertical-nav">
             <img src="images/bx-search.png" alt="Search" />
             <input type="text" placeholder="Search" class="search-box">
-            <img src="images/Language.svg" alt="Language" class="clr-img"/>
-            <img src="images/Dashboard.svg" alt="Language" class="clr-img"/>
-            <img src="images/Mode.svg" alt="Language" class="clr-img"/>
-            <img src="images/Notifications.svg" alt="Language" class="clr-img"/>
+            <img src="images/Language.svg" alt="Language" class="clr-img language-icon"/>
+            <img src="images/Dashboard.svg" alt="Language" class="clr-img dashboard-icon"/>
+            <img src="images/Mode.svg" alt="Language" class="clr-img mode-icon"/>
+            <img src="images/Notifications.svg" alt="Language" class="clr-img notifications-icon"/>
             <div class="admin-details">
                 <img src="images/Active-status-1.png" alt="Active-status-1" class="admin-img">
                 <div>
@@ -77,5 +77,7 @@
             
         </section>
     </div>
+    <script src="js/common.js" ></script>
+    <script src="js/roleDescr.js" ></script>
 </body>
 </html>

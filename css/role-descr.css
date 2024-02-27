@@ -27,12 +27,13 @@
 }
 .roles::after{
 
-        content: "";
-        background-color: #F44848;
-        width: 3px;
-        position: relative;
-        left: 11px;
-        border-radius: 2px 0px 0px 2px;
+    content: "";
+    background-color: #F44848;
+    width: 3px;
+    height: 41px;
+    position: absolute;
+    right: -13px;
+    border-radius: 2px 0px 0px 2px;
 }
 .add-roles{
     display: flex;
@@ -125,4 +126,98 @@
 }
 .emp-role-name{
     color: #444343;
+}
+
+@media screen and (max-width:1156px) {
+    .admin-details{
+        width: 23%;
+    }
+    .search-box {
+        width: 43%;
+    }
+    
+}
+
+@media screen and (max-width:856px) {
+    .admin-details{
+        width: 30%;
+    }
+    .search-box {
+        width: 35%;
+    }
+}
+@media screen and (max-width:765px) {
+    .admin-details{
+        width: 32%;
+    }
+    .search-box {
+        width: 33%;
+    }
+    .admin-img {
+        width: 25px;
+        }
+    
+        .admin-name {
+            font-size: 10px;
+        }
+    
+        
+        .designation{
+            font-size: 11px;
+        }
+        .search-icon{
+            width: 15px;
+        }
+        .language-icon{
+            width: 25px;
+        }
+        .dashboard-icon{
+            width: 15px;
+        }
+        .mode-icon{
+            width: 27px;
+        }
+        .notifications-icon{
+            width: 31px;
+        }
+}
+@media screen and (max-width:526px) {
+    .admin-details p{
+        display: none;
+    }
+    .admin-details{
+        width: 15%;
+    }
+    .down-arrow{
+        width: 12px;
+    }
+  
+}
+
+@media screen and (max-width:475px) {
+    .add-btn {
+        padding: 15px 12px 12px 12px;
+        width: 110px;
+        font-size: 8px;
+        height: 35px;
+    }
+    .add-btn img {
+        padding-right: 5px;
+        width: 9px;
+    }
+    .emp-card {
+        padding: 5px;
+    }
+  
+}
+@media screen and (max-width:420px) {
+    
+    .emp-card {
+        min-width: 220px;
+    }
+    .add-roles {
+        
+        flex-wrap: wrap;
+    }
+  
 }

@@ -119,9 +119,12 @@ function applyFilter(removeFilter=false){
        filteredEmployees=[];
        var loc=document.getElementById("location").value;
        var status=document.getElementById("status").value;
-       if(alphabetEployeeData.length>0)
+       if(alphabetEployeeData.length>0 || alphabetFilter)
        {
         cureentEmployeeList=alphabetEployeeData;
+       }
+       else{
+        cureentEmployeeList=employeesList;
        }
 
         //remove unwanted code
@@ -266,14 +269,17 @@ function reset()
     cureentEmployeeList=[];
     delete_rows();
     if(alphabetEployeeData.length==0 && !alphabetFilter){
-    cureentEmployeeList=employeesList.slice();}
+    cureentEmployeeList=employeesList.slice();
+    printTable(cureentEmployeeList); 
+}
     else{
+        filterName('filter',false);
         cureentEmployeeList=alphabetEployeeData;
     }
-    printTable(cureentEmployeeList);   
+      
 }
 
-function filterName(alphabet,name,className){
+function filterName(name,className){
     alphabetFilter=true;
     alphabetEployeeData=[];
      //remove
@@ -282,9 +288,23 @@ function filterName(alphabet,name,className){
     {
         if(liTags[i].style.backgroundColor=="rgb(244, 72, 72)")
         {
+            if(!className)
+            {
+                alphabet=liTags[i].firstChild.innerHTML;
+            }
+            else{
             liTags[i].style.backgroundColor="#EAEBEE";
             liTags[i].children[0].style.color="#919DAC";
+            }
         }
+    }
+    if(className){
+    className.style.backgroundColor="#F44848";
+    className.children[0].style.color="#ffffff";
+    alphabet=className.firstChild.innerHTML;
+    }
+    else{
+
     }
     document.getElementById("filter-icon").setAttribute('src','images/filter.svg');
     if(cureentEmployeeList.length  || appliedFilter){
@@ -300,8 +320,7 @@ function filterName(alphabet,name,className){
         {alphabetEployeeData.push(element);}
     });
     }
-    className.style.backgroundColor="#F44848";
-    className.children[0].style.color="#ffffff";
+    
     
   
     delete_rows();
@@ -408,7 +427,7 @@ function deleteRows()
 {
     var inputs=oTable.getElementsByTagName("input");
     var roleData=JSON.parse(localStorage.getItem("roleData"));
-
+    if(confirm("Are you sure.You want to Delete the data")){
     for(var i=1;i<inputs.length;i++)
     {
         if(inputs[i].checked){
@@ -445,6 +464,7 @@ function deleteRows()
     document.getElementById("delete-btn").style.backgroundColor="#F89191";
     }
 }
+}
 
 function createLi(){
     var ul=document.getElementById('create-li');
@@ -452,7 +472,7 @@ function createLi(){
         var li=document.createElement("li");
         var a=document.createElement('a');
         a.setAttribute("href",'#');
-        li.setAttribute("onclick","filterName('" + String.fromCharCode(i) + "','filter',this)");
+        li.setAttribute("onclick","filterName('filter',this)");
         var char=document.createTextNode(String.fromCharCode(i));
         a.appendChild(char);
         li.appendChild(a);
@@ -471,7 +491,7 @@ document.addEventListener('click',function(e){
 
 function editRow(className){
  
-    // debugger;
+    
     if(previous==className.parentElement.children[1])
     {
         className.parentElement.children[1].style.display='none';

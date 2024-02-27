@@ -4,6 +4,8 @@ if(!JSON.parse(localStorage.getItem('roleData'))){
 roleData=[];
 localStorage.setItem("roleData",JSON.stringify(roleData));
 }
+var roleExists=false;
+var k=false;
 obj={};
 var editedData={
     'isEdited':false,
@@ -82,7 +84,7 @@ function validateRole(){
             obj[x]=element.value;
         }
     }
-    obj['id']=makeid();
+    if(!roleExists){obj['id']=makeid();
     if(!hasEmptyField){
     checkedList=getObjects(checkedList)
     var role=new RoleInformation(obj,checkedList);
@@ -118,7 +120,7 @@ function validateRole(){
         
     }
     localStorage.setItem('roleNames',JSON.stringify(names));
-    window.location.href='roles.html';}
+    window.location.href='roles.html';}}
 
 }
 
@@ -155,9 +157,9 @@ function createSpan(text)
     image.setAttribute("class","display-img");
     roleEmployeeDivision.appendChild(image);
     var name=document.createElement("p");
-    var nameValue=ele.firstName+ele.lastName;
+    var nameValue=ele.empNo+' '+ele.firstName+' '+ele.lastName+' ';
 
-    nameValue=nameValue.length > 20 ? nameValue.substring(0,12) + "..." :nameValue;
+    nameValue=nameValue.length > 20 ? nameValue.substring(0,12) + "..." :nameValue;//change
     var content=document.createTextNode(nameValue);
     name.appendChild(content);
     roleEmployeeDivision.appendChild(name);
@@ -182,7 +184,7 @@ function createSpan(text)
     if(searhFilter!=""){
     cureentEmployeeList=JSON.parse(localStorage.getItem('data'));
     for(var j=0;j<cureentEmployeeList.length;j++){
-        if(cureentEmployeeList[j].firstName.toLowerCase().includes(searhFilter) &&
+        if((cureentEmployeeList[j].firstName.toLowerCase().includes(searhFilter)|| cureentEmployeeList[j].empNo.includes(searhFilter)) &&
         checkedList.indexOf(cureentEmployeeList[j].empNo)==-1){
             addEmployees(cureentEmployeeList[j]);
         }
@@ -244,6 +246,21 @@ function getObjects(checkedList){
         }
     });
     return list;
+}
+
+function findRoleDuplicates(className){
+    debugger;
+    border_change(className);
+    var name=document.getElementById('designation').value;
+    name=name.replace(" ","");
+    var roleData=JSON.parse(localStorage.getItem('roleData'));
+    roleData.forEach(ele=>{
+        if(name.toLowerCase()==(ele.designation).replace(" ","").toLowerCase()){
+            document.getElementById('designation').parentElement.appendChild(createSpan('Role Already Exista'));
+            roleExists=true;
+        }
+    })
+    
 }
 
 function makeid() {

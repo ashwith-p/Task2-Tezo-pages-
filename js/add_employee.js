@@ -3,6 +3,7 @@ var myObject=[];
 localStorage.setItem("data",JSON.stringify(myObject));
 }
 var currentDate=new Date();
+var hasEmptyField=false;
 var year = currentDate.getFullYear();
 var month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-indexed
 var day = currentDate.getDate().toString().padStart(2, '0');
@@ -34,8 +35,10 @@ function initializer()
 {
     var details=JSON.parse(localStorage.getItem('data'));
     roleId=JSON.parse(sessionStorage.getItem('roleId'));
+    if(roleId){
     roleId=roleId.roleId;
     console.log(roleId);
+    }
     var roleNames=JSON.parse(localStorage.getItem("roleNames"));
     var employee={};
     if(viewOrEdit!=null){
@@ -54,8 +57,10 @@ function initializer()
         
         document.getElementsByClassName("employee-number")[0].value=employee.empNo;
         document.getElementsByClassName('first-name')[0].value=employee.firstName;
+        
         document.getElementsByClassName('last-name')[0].value=employee.lastName;
         document.getElementsByClassName("date-of-birth")[0].value=employee.dateOfBirth;
+        
         document.getElementsByClassName("email-id")[0].value=employee.emailId;
         document.getElementsByClassName("mobile-no")[0].value=employee.mobieNo;
         document.getElementsByClassName('joining-date')[0].value=(employee.joiningDate).split('-').reverse().join('-');
@@ -68,6 +73,18 @@ function initializer()
         document.getElementsByClassName('cancel-btn')[0].value="close";
         document.getElementsByClassName('heading')[0].innerHTML="View Employee";
         document.getElementsByClassName('add-btn')[0].style.display="none";
+        document.getElementsByClassName("employee-number")[0].setAttribute('disabled',"");
+        document.getElementsByClassName("first-name")[0].setAttribute('disabled',"");
+        document.getElementsByClassName("last-name")[0].setAttribute('disabled',"");
+        document.getElementsByClassName("date-of-birth")[0].setAttribute('disabled',"");
+        document.getElementsByClassName("email-id")[0].setAttribute('disabled',"");
+        document.getElementsByClassName("mobile-no")[0].setAttribute('disabled',"");
+        document.getElementsByClassName("joining-date")[0].setAttribute('disabled',"");
+        document.getElementsByClassName("location")[0].setAttribute('disabled',"");
+        document.getElementsByClassName("job-title")[0].setAttribute('disabled',"");
+        document.getElementsByClassName("assign-manager")[0].setAttribute('disabled',"");
+        document.getElementsByClassName("assign-project")[0].setAttribute('disabled',"");
+        document.getElementsByClassName("department")[0].setAttribute('disabled',"");
         }
         else{
             document.getElementsByClassName('add-btn')[0].value="Edit employee";
@@ -101,6 +118,7 @@ function initializer()
         document.getElementsByClassName('department')[0].setAttribute("disabled","");
         document.getElementsByClassName('location')[0].value=role.roleLocation;
         document.getElementsByClassName('location')[0].setAttribute("disabled","");
+        
     }
 
 }
@@ -189,7 +207,7 @@ function createSpan(text)
 
   function validateDetails(){
     var form=document.getElementById("employee-details");
-    var hasEmptyField=false;
+    hasEmptyField=false;
     for (var i = 0; i < form.elements.length; i++) {
         var element = form.elements[i];
         if(element.value.length==0)
@@ -223,6 +241,31 @@ function createSpan(text)
         joiningDate,location,jobTitle,department,assignManager,assignProject,"Active");
     if(viewOrEdit){
         if(viewOrEdit['isEdited']){
+            var reflectOnRole=viewOrEdit['employeeNumber'];
+            roleData.forEach(roles=>{
+                if(roles.designation==obj.jobTitle)
+                {
+                    var hasExists=false;
+                    (roles.employeesList).forEach(x=>{
+                        if(x==reflectOnRole){
+                            hasExists=true;
+                        }
+                    })
+                    if(!hasExists){
+                    roles.employeesList.push(obj);}
+                }
+                else{
+                    for(var i=0;i<roles.employeesList.length;i++)
+                    {
+                        if(reflectOnRole==(roles.employeesList)[i].empNo)
+                        {
+                            (roles.employeesList).splice(i,1);
+                        }
+                    }
+                }
+
+            })
+            localStorage.setItem('roleData',JSON.stringify(roleData));
             localStorage.setItem("data",JSON.stringify(cureentEmployeeList));
         }
     }
@@ -258,6 +301,7 @@ function checkABove18(className){
 document.getElementById('employee-details').addEventListener('submit',function(e){
     e.preventDefault();
     validateDetails();
-    window.location.href='employees.html';
+    if(!hasEmptyField){
+    window.location.href='employees.html';}
 })
 
