@@ -13,7 +13,7 @@
         <nav class="horizantal-nav">
             <img src="images/tezosymbol.png" alt="tezosybol" class="brand-icon"/>
             <img src="images/TezoLogo.svg" alt="TezoLogo" class="brand-logo"/>
-            <img src="images/handle.png" alt="Handle" class="handle" onclick="toggle()"/> 
+            <img src="images/handle.png" alt="Handle" class="handle" onclick="toggleSideBar()"/> 
             <p class="horizantal-nav-description">ALL</p>
             <div class="dashboard features">
                 <img src="images/Dashboard.svg" alt="DashboardLogo" class="horizontal-logos">
@@ -155,7 +155,7 @@
                 </div>
                 </div>
                 <div class="buttons">
-                    <input type="button" value="Cancel" class="cancel-btn" onclick="sessionStorage.removeItem('roleId'); window.location.href = 'employees.html';">
+                    <input type="button" value="Cancel" class="cancel-btn" onclick="closeAll()">
                     <input type="submit" value="Add Employee" class="add-btn">
                 </div>
             </form>
@@ -163,6 +163,7 @@
         </section>
     </div>
     <script src="js/common.js"></script>
-    <script src="js/add_employee.js"></script>
+    <script src="js/addEmployee.js"></script>
+    <script src="js/storageFunctionalities.js"></script>
 </body>
 </html>

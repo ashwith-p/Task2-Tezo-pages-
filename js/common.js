@@ -1,8 +1,9 @@
-var i=false;
+var isSidebarToggled=false;
+var changeBorder=false;
 var mobileView=false;
-function toggle(){
+function toggleSideBar(){
     var toogleBtn=document.getElementsByClassName("horizantal-content");
-    if(!i)
+    if(!isSidebarToggled)
     { 
         toogleBtn[0].classList.add("toggle");
         document.getElementsByClassName('roles-or-user-management')[0].innerHTML="Role";
@@ -24,11 +25,11 @@ function toggle(){
             document.getElementsByClassName("handle")[0].style.top="2%";
         }
         
-        i=true;
+        isSidebarToggled=true;
     }
     else{
         if(!mobileView){
-        document.getElementsByClassName('horizantal-content')[0].style.position="static";
+        document.getElementsByClassName('horizantal-content').style.position="static";
         document.getElementsByClassName('roles-or-user-management')[0].innerHTML="ROLE/USER MANAGEMENT";
         document.getElementsByClassName('container')[0].style.width="calc(100% - 230px)";
         document.getElementsByClassName("handle")[0].style.left="175px";
@@ -45,18 +46,18 @@ function toggle(){
         }
         toogleBtn[0].classList.remove("toggle");
         document.getElementsByClassName('handle')[0].style.rotate="0deg";
-        i=false;
+        isSidebarToggled=false;
         
     }
     
 }
 window.onresize = function() {
     if(window.screen.width<665 && !mobileView){
-        toggle();
+        toggleSideBar();
         mobileView=true;
     }
     else if(window.screen.width>=665 && mobileView){
-        toggle();
+        toggleSideBar();
         document.getElementsByClassName('horizantal-content')[0].style.position="static";
         document.getElementsByClassName('container')[0].style.width="calc(100% - 230px)";
         document.getElementsByClassName("handle")[0].style.left="175px";
@@ -64,3 +65,35 @@ window.onresize = function() {
         mobileView=false;
     }
 };
+
+function createErrorMessage(text)
+{
+    var span=document.createElement("span");
+    var text=document.createTextNode(text);
+    span.setAttribute("class","warning");
+    span.appendChild(text);
+    return span;
+}
+
+function border_change(className)
+{
+    
+    if(!checkBorder){
+    className.style.border="2px solid rgb(0, 126, 252)";
+    checkBorder=true;
+    }
+    else{
+        className.style.border='2px solid #e2e2e2';
+        checkBorder=false;
+    }
+    removeErrorMessage(className);
+}
+
+function removeErrorMessage(className)
+{
+    var x=className.parentNode;
+    var a=x.getElementsByTagName("span");
+    if(a.length>0){
+        a[0].remove();
+    }
+}

@@ -87,6 +87,7 @@ select{
     padding: 7px 20px;
     margin-left: 10px;
     border-radius: 5px;
+    cursor: pointer;
     
 }
 .cancel-btn{

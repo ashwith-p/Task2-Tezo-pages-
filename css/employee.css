@@ -149,13 +149,14 @@
     padding: 5px 10px;
     border: 1px solid #F44848;
     border-radius: 5px;
+    cursor: pointer;
 }
 .apply-btn{
     background-color: #ffabab;
     color: #ffffff;
 }
 
-.filter-search button:hover{
+.reset-btn:hover{
     background-color: #F44848;
     color: #ffffff;
 }

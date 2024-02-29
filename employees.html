@@ -14,7 +14,7 @@
         <nav class="horizantal-nav">
             <img src="images/tezosymbol.png" alt="tezosybol" class="brand-icon"/>
             <img src="images/TezoLogo.svg" alt="TezoLogo" class="brand-logo"/>
-            <img src="images/handle.png" alt="Handle" class="handle" onclick="toggle()"/>
+            <img src="images/handle.png" alt="Handle" class="handle" onclick="toggleSideBar()"/>
             <p class="horizantal-nav-description">ALL</p>
             <div class="dashboard features">
                 <img src="images/Dashboard.svg" alt="DashboardLogo" class="horizontal-logos">
@@ -61,7 +61,7 @@
                 <img src="images/side_arrow.svg" alt="down_arrow" class="down-arrow">
             </div>
         </nav>
-        <section>
+        <section id="html">
             <div class="employees-add-export">
                 <div class="employee-content">
                     <p>Employees</p>
@@ -106,8 +106,8 @@
                 </select>
                 </div>
                 <div>
-                <button class="reset-btn" onClick="reset()">Reset</button>
-                <button class="apply-btn" onClick="applyFilter()">Apply</button>
+                <button class="reset-btn" onClick="resetFiltersOnEmployees()">Reset</button>
+                <button class="apply-btn" onClick="applyFilterOnEmployees()">Apply</button>
                 </div>
             </div>
             <div class="employee-info">
@@ -118,11 +118,11 @@
                 </div>
                 <table class="employee-table">
                     <tr class="table-heading">
-                        <th><input type="checkbox" class="checkbox-btn" onclick="selectRows(this)"></th>
-                        <th class="user-width">USER <img src="images/sort-solid.svg" alt="Sort icon" width="5px" class="sort-icon" onclick="sortDataByColumn('user')"/></th>
+                        <th><input type="checkbox" class="checkbox-btn" onclick="selectCheckedRows(this)"></th>
+                        <th class="user-width">USER <img src="images/sort-solid.svg" alt="Sort icon" width="5px" class="sort-icon" onclick="sortDataByColumn('firstName')"/></th>
                         <th>LOCATION<img src="images/sort-solid.svg" alt="Sort icon" width="5px" class="sort-icon" onclick="sortDataByColumn('location')"/></th>
-                        <th style="width: 150px;">DEPARTMRNT<img src="images/sort-solid.svg" alt="Sort icon" width="5px" class="sort-icon" onclick="sortDataByColumn('dept')"/></th>
-                        <th style="width: 120px;">ROLE<img src="images/sort-solid.svg" alt="Sort icon" width="5px" class="sort-icon" onclick="sortDataByColumn('role')"/></th>
+                        <th style="width: 150px;">DEPARTMRNT<img src="images/sort-solid.svg" alt="Sort icon" width="5px" class="sort-icon" onclick="sortDataByColumn('department')"/></th>
+                        <th style="width: 120px;">ROLE<img src="images/sort-solid.svg" alt="Sort icon" width="5px" class="sort-icon" onclick="sortDataByColumn('jobTitle')"/></th>
                         <th style="width: 100px;">EMP NO <img src="images/sort-solid.svg" alt="Sort icon" width="5px" class="sort-icon" onclick="sortDataByColumn('empNo')"/></th>
                         <th style="width: 80px;">STATUS <img src="images/sort-solid.svg" alt="Sort icon" width="5px" class="sort-icon" onclick="sortDataByColumn('status')"></th>
                         <th style="width: 120px;">JOIN DT<img src="images/sort-solid.svg" alt="Sort icon" width="5px" class="sort-icon" onclick="sortDataByColumn('joiningDate')"/></th>
@@ -134,6 +134,7 @@
     </div>
     <script  src="js/common.js" ></script>
     <script  src="js/employee.js" ></script>
+    <script src="js/storageFunctionalities.js"></script>
     
 </body>
 </html>

@@ -11,11 +11,10 @@ var editedData={
     'isEdited':false,
     'cureentEmployeeList':{}
 };
-var checkedList=[]
-var changeBorder=false; //name
-initializer();
+var checkedList=[] //name
+initialize();
 
-function initializer(){
+function initialize(){
     var roleDetails=JSON.parse(sessionStorage.getItem('roleDetails'));
     var rolesInfo=JSON.parse(localStorage.getItem('roleData'));
     var cureentEmployeeList=[];
@@ -42,7 +41,7 @@ function initializer(){
         for(var i=0;i<employeeData.length;i++){
             if(ele.empNo==employeeData[i].empNo)
             {
-                addEmployees(employeeData[i],true);
+                displayEmployeesToAssign(employeeData[i],true);
             }
         }
     })
@@ -76,7 +75,7 @@ function validateRole(){
             if(a.length==0){
             element.style.border="2px solid red";
             
-            parent.appendChild(createSpan("This field is required"));
+            parent.appendChild(createErrorMessage("This field is required"));
             }
         }
         else{
@@ -84,9 +83,9 @@ function validateRole(){
             obj[x]=element.value;
         }
     }
-    if(!roleExists){obj['id']=makeid();
+    if(!roleExists){obj['id']=Date.now().toString();//generate Role Id dynamically
     if(!hasEmptyField){
-    checkedList=getObjects(checkedList)
+    checkedList=getEmployeeDetails(checkedList)
     var role=new RoleInformation(obj,checkedList);
     for(var j=0;j<checkedList.length;j++)
     {
@@ -108,33 +107,11 @@ function validateRole(){
     var roleData=JSON.parse(localStorage.getItem('roleData'));
     roleData.push(role);
     localStorage.setItem("roleData",JSON.stringify(roleData));
-    
-    if(localStorage.getItem('roleNames'))
-    {
-        var names=JSON.parse(localStorage.getItem('roleNames'));
-        names.push(role.designation);
-    }
-    else{
-        var names=[];
-        names.push(role.designation);
-        
-    }
-    localStorage.setItem('roleNames',JSON.stringify(names));
     window.location.href='roles.html';}}
 
 }
 
-function createSpan(text)
-{
-    var span=document.createElement("span");
-    var text=document.createTextNode(text);
-    span.setAttribute("class","warning");
-    span.appendChild(text);
-    return span;
-}
-
-
- function cleardiv(){
+ function removeDeselectedEmployees(){
     var ele=document.getElementsByClassName("employee-list");
     if(ele){
     j=0;
@@ -150,16 +127,16 @@ function createSpan(text)
 }
  }
 
- function addEmployees(ele,checkStatus=false){
+ function displayEmployeesToAssign(ele,checkStatus=false){
     var roleEmployeeDivision=document.createElement("div");
     var image=document.createElement("img");
     image.setAttribute("src","images/person1.jpg");
     image.setAttribute("class","display-img");
     roleEmployeeDivision.appendChild(image);
     var name=document.createElement("p");
-    var nameValue=ele.empNo+' '+ele.firstName+' '+ele.lastName+' ';
+    var nameValue=ele.empNo+' '+ele.firstName+' '+ele.lastName;
 
-    nameValue=nameValue.length > 20 ? nameValue.substring(0,12) + "..." :nameValue;//change
+    
     var content=document.createTextNode(nameValue);
     name.appendChild(content);
     roleEmployeeDivision.appendChild(name);
@@ -168,7 +145,7 @@ function createSpan(text)
     if(checkStatus){
         checkedList.push(ele.empNo);
     inputElement.setAttribute("checked","");}
-    inputElement.setAttribute('onchange',"checkValue(this, '" + ele.empNo + "')");
+    inputElement.setAttribute('onchange',"addEmployeeToRole(this, '" + ele.empNo + "')");
     var employeeList=document.createElement("div");
     employeeList.setAttribute("class","employee-list");
 
@@ -179,63 +156,33 @@ function createSpan(text)
  }
 
  function filterByNames(){
-    cleardiv();
+    removeDeselectedEmployees();
     var searhFilter=document.getElementById('assign-employees').value;
     if(searhFilter!=""){
     cureentEmployeeList=JSON.parse(localStorage.getItem('data'));
     for(var j=0;j<cureentEmployeeList.length;j++){
         if((cureentEmployeeList[j].firstName.toLowerCase().includes(searhFilter)|| cureentEmployeeList[j].empNo.includes(searhFilter)) &&
         checkedList.indexOf(cureentEmployeeList[j].empNo)==-1){
-            addEmployees(cureentEmployeeList[j]);
+            displayEmployeesToAssign(cureentEmployeeList[j]);
         }
     }
 }
     
  }
 
-function checkValue(className,empNo){
+function addEmployeeToRole(className,empNo){
    
     if(className.checked){
         checkedList.push(empNo);
     }
     else{
         if(checkedList.indexOf(empNo)!=-1){
-            
             checkedList.splice(checkedList.indexOf(empNo),1);
-           
         }
     }
    
 }
-
- function removeSpan(className)
-{
-    var x=className.parentNode;
-    var a=x.getElementsByTagName("span");
-    if(a.length>0){
-        a[0].remove();
-    }
-}
-
-
-function border_change(className)
-{
-    
-    if(!k){
-    className.style.border="2px solid rgb(0, 126, 252)";
-    k=true;
-    }
-    else{
-        
-        className.style.border='1px solid #e8e8e8';
-        k=false;
-        
-    }
-    removeSpan(className);
-    cleardiv();
-}
-
-function getObjects(checkedList){
+function getEmployeeDetails(checkedList){
     var list=[];
     checkedList.forEach(ele=>{
         for(var j=0;j<cureentEmployeeList.length;j++){
@@ -248,29 +195,17 @@ function getObjects(checkedList){
     return list;
 }
 
-function findRoleDuplicates(className){
-    debugger;
+function findDuplicateRoles(className){
     border_change(className);
     var name=document.getElementById('designation').value;
     name=name.replace(" ","");
     var roleData=JSON.parse(localStorage.getItem('roleData'));
     roleData.forEach(ele=>{
         if(name.toLowerCase()==(ele.designation).replace(" ","").toLowerCase()){
-            document.getElementById('designation').parentElement.appendChild(createSpan('Role Already Exista'));
+            document.getElementById('designation').parentElement.appendChild(createErrorMessage('Role Already Exista'));
             roleExists=true;
         }
     })
     
 }
 
-function makeid() {
-    let result = '';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const charactersLength = characters.length;
-    let counter = 0;
-    while (counter < 5) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-      counter += 1;
-    }
-    return result;
-  }

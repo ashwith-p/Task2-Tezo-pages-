@@ -14,7 +14,7 @@
         <nav class="horizantal-nav">
             <img src="images/tezosymbol.png" alt="tezosybol" class="brand-icon"/>
             <img src="images/TezoLogo.svg" alt="TezoLogo" class="brand-logo"/>
-            <img src="images/handle.png" alt="Handle" class="handle" onclick="toggle()"/>
+            <img src="images/handle.png" alt="Handle" class="handle" onclick="toggleSideBar()"/>
             <p class="horizantal-nav-description">ALL</p>
             <div class="dashboard features">
                 <img src="images/Dashboard.svg" alt="DashboardLogo" class="horizontal-logos">
@@ -67,7 +67,7 @@
             <div class="basic-info">
                 <div class="display-flex">
                     <label for="RoleName">Role Name</label>
-                    <input type="text" placeholder="Text" id="designation" onfocus="border_change(this)" onblur="findRoleDuplicates(this)">
+                    <input type="text" placeholder="Text" id="designation" onfocus="border_change(this)" onblur="findDuplicateRoles(this)">
                 </div>
                 <div class="display-flex">
                     <label for="Department">Department</label>
@@ -112,5 +112,6 @@
         </div>
         <script src="js/common.js" ></script>
         <script src="js/addRoles.js"></script>
+        <script src="js/storageFunctionalities.js"></script>
 </body>
 </html>
