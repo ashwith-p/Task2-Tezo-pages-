@@ -45,7 +45,6 @@ function initialize()
     }
     if(roleId){
     roleId=roleId.roleId;
-    console.log(roleId);
     }
   
     var employee={};
@@ -78,6 +77,7 @@ function initialize()
         {
             document.querySelector('.'+i).setAttribute('disabled',"");
         }
+        sessionStorage.removeItem('updateDetails');
         }
         else{
             document.getElementsByClassName('add-btn')[0].value="Edit employee";

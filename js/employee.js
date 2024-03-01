@@ -5,7 +5,6 @@ var employeesList = JSON.parse(localStorage.getItem('data')); //change name to e
 var cureentEmployeeList = employeesList.slice(); //change name
 Window.onload = printEmployeesTable(JSON.parse(localStorage.getItem('data')));
 var alphabetEployeeData = [];
-alphabetDropdown();
 createAplhabetFilter();
 var appliedFilter = false;
 var previous = 'none';
@@ -254,18 +253,13 @@ function convertToCSV() {
     }).join('\n')
 }
 
-
-function downloadCSV(csvData, fileName) {
+function exportData() {
+    var csvData = convertToCSV();
     const blob = new Blob([csvData], { type: 'csv' });
     const link = document.createElement('a');
     link.href = window.URL.createObjectURL(blob);
-    link.download = fileName;
+    link.download = 'example.csv';
     link.click();
-}
-
-function exportData() {
-    var csvData = convertToCSV();
-    downloadCSV(csvData, 'exzmple.csv');
 }
 
 function removeFilter() {
